@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React, { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Contact = () => {
-  const [nombre, setNombre] = useState('');
-  const [mensaje, setMensaje] = useState('');
-  const [contacto, setContacto] = useState('whatsapp'); // Estado para elegir método de contacto
+  const [nombre, setNombre] = useState("");
+  const [mensaje, setMensaje] = useState("");
+  const [contacto, setContacto] = useState("whatsapp"); // Estado para elegir método de contacto
 
   const { ref, inView } = useInView({
     triggerOnce: false,
@@ -24,49 +24,63 @@ const Contact = () => {
   };
 
   const abrirChatWhatsApp = () => {
-    const telefono = '+34623350106'; // Tu número de WhatsApp
+    const telefono = "+34623350106"; // Tu número de WhatsApp
     const mensajeWhatsApp = `Hola, soy ${nombre}. ${mensaje}`;
-    window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(mensajeWhatsApp)}`, '_blank');
+    window.open(
+      `https://wa.me/${telefono}?text=${encodeURIComponent(mensajeWhatsApp)}`,
+      "_blank"
+    );
   };
 
   const llamarPorTelefono = () => {
-    const telefono = '+34623350106'; // Tu número de teléfono
-    window.open(`tel:${telefono}`, '_self');
+    const telefono = "+34623350106"; // Tu número de teléfono
+    window.open(`tel:${telefono}`, "_self");
   };
-
   return (
     <motion.div
       ref={containerRef}
-      className="w-full max-w-md mx-auto rounded-2xl shadow-2xl bg-gray-950/10 p-6 text-center"
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+      className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl dark:bg-gray-950/10 p-6 md:p-10 lg:p-16 text-center bg-gray-200 dark:bg-gray-900 transition-all duration-300"
+      initial={{ scale: 0.8 }}
+      animate={inView ? { scale: 1 } : { scale: 0.8 }}
       transition={{ duration: 0.5 }}
     >
       <motion.section
         id="contact"
-        className="py-20"
+        className="py-20 "
         initial={{ opacity: 0, scale: 0.8 }}
         animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.5 }}
         ref={ref}
       >
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-12 text-custom-yellow-2">Contáctanos</h2>
+          <h1 className="mb-4 pb-10 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+              Reserva tu cita
+            </span>
+          </h1>
           <div className="mb-4 flex justify-center space-x-4">
             <button
-              className={`px-4 py-2 rounded ${contacto === 'whatsapp' ? 'bg-green-500 text-white' : 'bg-gray-300 text-gray-700'}`}
-              onClick={() => handleContactoChange('whatsapp')}
+              className={`px-4 py-2 rounded ${
+                contacto === "whatsapp"
+                  ? "bg-green-500 text-white"
+                  : "bg-gray-300 text-gray-700"
+              }`}
+              onClick={() => handleContactoChange("whatsapp")}
             >
               WhatsApp
             </button>
             <button
-              className={`px-4 py-2 rounded ${contacto === 'telefono' ? 'bg-yellow-500 text-white' : 'bg-gray-300 text-gray-700'}`}
-              onClick={() => handleContactoChange('telefono')}
+              className={`px-4 py-2 rounded ${
+                contacto === "telefono"
+                  ? "bg-yellow-500 text-white"
+                  : "bg-gray-300 text-gray-700"
+              }`}
+              onClick={() => handleContactoChange("telefono")}
             >
               Teléfono
             </button>
           </div>
-          {contacto === 'whatsapp' && (
+          {contacto === "whatsapp" && (
             <motion.div
               className="flex justify-center mt-4"
               initial={{ opacity: 0 }}
@@ -95,7 +109,7 @@ const Contact = () => {
               </button>
             </motion.div>
           )}
-          {contacto === 'telefono' && (
+          {contacto === "telefono" && (
             <motion.div
               className="flex justify-center mt-4"
               initial={{ opacity: 0 }}

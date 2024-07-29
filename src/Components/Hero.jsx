@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
-import { Link } from 'react-scroll';
-import { motion } from 'framer-motion';
-import logo from '../images/barber-2.webp';
-import CustomButton from './CustomButton';
-import LogoInstagram from './Svg/logo-instagram';
-import { useInView } from 'react-intersection-observer';
+import React, { useRef } from "react";
+import { Link } from "react-scroll";
+import { motion } from "framer-motion";
+import logo from "../images/barber-2.webp";
+import CustomButton from "./CustomButton";
+import LogoInstagram from "./Svg/logo-instagram";
+import { useInView } from "react-intersection-observer";
 
 const Hero = () => {
   const { ref, inView } = useInView({
@@ -17,14 +17,14 @@ const Hero = () => {
   return (
     <motion.div
       ref={containerRef}
-      className="w-full max-w-md mx-auto rounded-2xl shadow-2xl bg-gray-950/10 p-6 text-center"
+      className="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl dark:bg-gray-950/10 p-6 md:p-10 lg:p-16 text-center bg-gray-200 dark:bg-gray-900 transition-all duration-300"
       initial={{ scale: 0.8 }}
       animate={inView ? { scale: 1 } : { scale: 0.8 }}
       transition={{ duration: 0.5 }}
     >
       <motion.section
         id="Hero"
-        className="text-gray-400 bg-gray-900 body-font"
+        className="text-gray-900 bg-gray-200 dark:bg-gray-900 body-font"
         initial={{ scale: 0.8 }}
         animate={inView ? { scale: 1 } : { scale: 0.8 }}
         transition={{ duration: 0.5 }}
@@ -40,8 +40,9 @@ const Hero = () => {
             <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-custom-yellow-2">
               ¡Bienvenido a Casanova!
             </h1>
-            <p className="leading-relaxed mb-8">
-              Descubre una experiencia única en nuestro salón, donde la tradición se une con la innovación.
+            <p className="leading-relaxed mb-8 text-base md:text-lg lg:text-xl">
+              Descubre una experiencia única en nuestro salón, donde la
+              tradición se une con la innovación.
             </p>
             <div className="flex justify-center space-x-4 mb-8">
               <Link
@@ -66,7 +67,7 @@ const Hero = () => {
                 href="https://www.instagram.com/casanovabarberia7/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gray-800 py-2 px-6 rounded-lg text-white flex items-center space-x-2 hover:bg-gray-700 transition duration-300"
+                className="dark:bg-gray-200 bg-gray-800 py-2 px-6 rounded-lg text-white flex items-center space-x-2 hover:bg-gray-700 transition duration-300"
               >
                 <LogoInstagram />
               </a>
